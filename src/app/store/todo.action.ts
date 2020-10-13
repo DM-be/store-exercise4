@@ -2,6 +2,8 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Action } from "@ngrx/store";
 import { Todo } from "./models/todo";
 
+
+// we will need more actions, each with success and failure
 export enum TodoActionTypes {
   ADD_TODO = "[TODO] add todo",
   COMPLETE_TODO = "[TODO] completed todo",

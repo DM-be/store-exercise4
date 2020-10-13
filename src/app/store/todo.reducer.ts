@@ -13,10 +13,11 @@ export function TodoReducer(
         todoList: action.payload
       };
     case TodoActionTypes.LOAD_TODO_FAILURE: {
-      console.log(action.payload);
+      console.log(action.payload); // we can handle errors here
       return state;
     }
     case TodoActionTypes.ADD_TODO: {
+      // this should change right?
       const todo: Todo = {
         id: uuidv4(),
         text: action.payload,
@@ -27,13 +28,14 @@ export function TodoReducer(
       };
     }
     case TodoActionTypes.DELETE_TODO: {
+      // maybe we should only do this in a success response....
       return {
         todoList: [
           ...state.todoList.filter((todo: Todo) => todo.id !== action.payload)
         ]
       };
     }
-    case TodoActionTypes.COMPLETE_TODO: {
+    case TodoActionTypes.COMPLETE_TODO: { 
       const todoList = [...state.todoList];
       const todoIndex = todoList.findIndex(
         (todo: Todo) => todo.id === action.payload
