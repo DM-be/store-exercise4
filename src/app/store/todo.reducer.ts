@@ -33,18 +33,18 @@ export function TodoReducer(
         ]
       };
     }
-   // case TodoActionTypes.COMPLETE_TODO
-    //   const todoList = [...state.todoList];
-    //   const todoIndex = todoList.findIndex(
-    //     (todo: Todo) => todo.id === action.payload
-    //   );
-    //   const todo = { ...todoList[todoIndex] };
-    //   todo.complete = true;
-    //   todoList[todoIndex] = todo;
-    //   return {
-    //     todoList
-    //   };
-    // }
+    case TodoActionTypes.COMPLETE_TODO_SUCCESS:
+      const todoList = [...state.todoList];
+      const todoIndex = todoList.findIndex(
+        (todo: Todo) => todo.id === action.payload
+      );
+      const todo = { ...todoList[todoIndex] };
+      todo.complete = action.request.complete;
+      todoList[todoIndex] = todo;
+      return {
+        todoList
+      };
+
     default:
       return state;
   }

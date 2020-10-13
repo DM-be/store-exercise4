@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AddTodoRequest } from "./store/models/AddTodoRequest";
+import { CompleteTodoRequest } from "./store/models/CompleteTodoRequest";
 import { Todo } from "./store/models/todo";
 
 @Injectable()
@@ -20,5 +21,15 @@ export class DataService {
 
   public deleteTodo(id: number): Observable<void> {
     return this.http.delete<void>(`${this.BASE_URL}/todos/${id}`);
+  }
+
+  public completeTodo(
+    id: number,
+    completeTodoRequest: CompleteTodoRequest
+  ): Observable<void> {
+    return this.http.patch<void>(
+      `${this.BASE_URL}/todos/${id}`,
+      completeTodoRequest
+    );
   }
 }
