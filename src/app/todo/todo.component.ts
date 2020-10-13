@@ -20,7 +20,7 @@ export class TodoComponent implements OnInit {
   }
 
   completeTodo() {
-    this.store.dispatch(new CompleteTodoAction(this.todo.id));
+  //  this.store.dispatch(new CompleteTodoAction(this.todo.id));
   }
 
   deleteTodo() {
