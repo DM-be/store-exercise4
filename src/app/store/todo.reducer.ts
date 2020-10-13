@@ -19,7 +19,7 @@ export function TodoReducer(
     case TodoActionTypes.ADD_TODO: {
       // this should change right?
       const todo: Todo = {
-        id: uuidv4(),
+        id: uuidv4(), // rest api's return ids as numbers 
         text: action.payload,
         complete: false
       };
@@ -31,7 +31,7 @@ export function TodoReducer(
       // maybe we should only do this in a success response....
       return {
         todoList: [
-          ...state.todoList.filter((todo: Todo) => todo.id !== action.payload)
+          ...state.todoList.filter((todo: Todo) => todo.id !== action.payload) 
         ]
       };
     }
