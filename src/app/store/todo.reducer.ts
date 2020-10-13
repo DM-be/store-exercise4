@@ -25,7 +25,7 @@ export function TodoReducer(
       console.log(action.payload);
       return state;
     }
-    case TodoActionTypes.DELETE_TODO: {
+    case TodoActionTypes.DELETE_TODO_SUCCESS: {
       // maybe we should only do this in a success response....
       return {
         todoList: [

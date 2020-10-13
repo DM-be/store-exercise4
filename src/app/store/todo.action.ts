@@ -10,6 +10,8 @@ export enum TodoActionTypes {
   ADD_TODO_FAILURE = "[TODO] add todo failure",
   COMPLETE_TODO = "[TODO] completed todo",
   DELETE_TODO = "[TODO] delete todo",
+  DELETE_TODO_SUCCESS = "[TODO] delete todo success",
+  DELETE_TODO_FAILURE = "[TODO] delete todo failure",
   LOAD_TODO = "[TODO] load todos",
   LOAD_TODO_SUCCESS = "[TODO] load todos success",
   LOAD_TODO_FAILURE = "[TODO] load todos failure"
@@ -51,14 +53,27 @@ export class CompleteTodoAction implements Action {
 
 export class DeleteTodoAction implements Action {
   readonly type = TodoActionTypes.DELETE_TODO;
-  constructor(public payload: string) {}
+  constructor(public payload: number) {}
+}
+
+export class DeleteTodoSuccessAction implements Action {
+  readonly type = TodoActionTypes.DELETE_TODO_SUCCESS;
+  constructor(public payload: number) {}
+}
+
+export class DeleteTodoFailureAction implements Action {
+  readonly type = TodoActionTypes.DELETE_TODO_FAILURE;
+  constructor(public payload: HttpErrorResponse) {}
 }
 
 export type TodoAction =
   | AddTodoAction
   | CompleteTodoAction
   | DeleteTodoAction
+  | DeleteTodoSuccessAction
+  | DeleteTodoFailureAction
   | LoadTodoActionSuccess
   | LoadTodoActionFailure
   | AddTodoSuccessAction
-  | AddTodoFailureAction;
+  | AddTodoFailureAction
+  

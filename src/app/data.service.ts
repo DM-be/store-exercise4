@@ -17,4 +17,8 @@ export class DataService {
   public addTodo(addTodoRequest: AddTodoRequest): Observable<Todo> {
     return this.http.post<Todo>(`${this.BASE_URL}/todos`, addTodoRequest);
   }
+
+  public deleteTodo(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.BASE_URL}/todos/${id}`);
+  }
 }
