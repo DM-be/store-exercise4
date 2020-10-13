@@ -16,16 +16,14 @@ export function TodoReducer(
       console.log(action.payload); // we can handle errors here
       return state;
     }
-    case TodoActionTypes.ADD_TODO: {
-      // this should change right?
-      const todo: Todo = {
-        id: uuidv4(),
-        text: action.payload,
-        complete: false
-      };
+    case TodoActionTypes.ADD_TODO_SUCCESS: {
       return {
-        todoList: [...state.todoList, todo]
+        todoList: [...state.todoList, action.payload]
       };
+    }
+    case TodoActionTypes.ADD_TODO_FAILURE: {
+      console.log(action.payload);
+      return state;
     }
     case TodoActionTypes.DELETE_TODO: {
       // maybe we should only do this in a success response....
@@ -35,7 +33,7 @@ export function TodoReducer(
         ]
       };
     }
-    case TodoActionTypes.COMPLETE_TODO: { 
+    case TodoActionTypes.COMPLETE_TODO: {
       const todoList = [...state.todoList];
       const todoIndex = todoList.findIndex(
         (todo: Todo) => todo.id === action.payload

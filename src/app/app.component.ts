@@ -7,6 +7,7 @@ import {
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { AppState } from "./store/app.state";
+import { AddTodoRequest } from "./store/models/AddTodoRequest";
 import { Todo } from "./store/models/todo";
 import { AddTodoAction, LoadTodoAction } from "./store/todo.action";
 import {
@@ -29,9 +30,7 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Store<AppState>) {}
   ngOnInit(): void {
-
-    this.store.dispatch(new LoadTodoAction())
-
+    this.store.dispatch(new LoadTodoAction());
 
     this.completedTodos$ = this.store.select(state =>
       selectCompletedTodos(state.todoState)
@@ -44,7 +43,11 @@ export class AppComponent implements OnInit {
 
   public addTodo() {
     if (this.todoText.length > 0) {
-      this.store.dispatch(new AddTodoAction(this.todoText));
+      const addTodoRequest: AddTodoRequest = {
+        complete: false,
+        text: this.todoText
+      };
+      this.store.dispatch(new AddTodoAction(addTodoRequest));
       this.todoText = "";
     }
   }

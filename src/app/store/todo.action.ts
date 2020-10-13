@@ -1,11 +1,13 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Action } from "@ngrx/store";
+import { AddTodoRequest } from "./models/AddTodoRequest";
 import { Todo } from "./models/todo";
-
 
 // we will need more actions, each with success and failure
 export enum TodoActionTypes {
   ADD_TODO = "[TODO] add todo",
+  ADD_TODO_SUCCESS = "[TODO] add todo success",
+  ADD_TODO_FAILURE = "[TODO] add todo failure",
   COMPLETE_TODO = "[TODO] completed todo",
   DELETE_TODO = "[TODO] delete todo",
   LOAD_TODO = "[TODO] load todos",
@@ -29,7 +31,17 @@ export class LoadTodoActionFailure implements Action {
 
 export class AddTodoAction implements Action {
   readonly type = TodoActionTypes.ADD_TODO;
-  constructor(public payload: string) {}
+  constructor(public payload: AddTodoRequest) {}
+}
+
+export class AddTodoSuccessAction implements Action {
+  readonly type = TodoActionTypes.ADD_TODO_SUCCESS;
+  constructor(public payload: Todo) {}
+}
+
+export class AddTodoFailureAction implements Action {
+  readonly type = TodoActionTypes.ADD_TODO_FAILURE;
+  constructor(public payload: HttpErrorResponse) {}
 }
 
 export class CompleteTodoAction implements Action {
@@ -47,4 +59,6 @@ export type TodoAction =
   | CompleteTodoAction
   | DeleteTodoAction
   | LoadTodoActionSuccess
-  | LoadTodoActionFailure;
+  | LoadTodoActionFailure
+  | AddTodoSuccessAction
+  | AddTodoFailureAction;

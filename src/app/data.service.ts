@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { AddTodoRequest } from "./store/models/AddTodoRequest";
 import { Todo } from "./store/models/todo";
 
 @Injectable()
@@ -11,5 +12,9 @@ export class DataService {
 
   public getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.BASE_URL}/todos`);
+  }
+
+  public addTodo(addTodoRequest: AddTodoRequest): Observable<Todo> {
+    return this.http.post<Todo>(`${this.BASE_URL}/todos`, addTodoRequest);
   }
 }
