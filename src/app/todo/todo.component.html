@@ -1,0 +1,7 @@
+<span>{{todo.text}}<span>
+<div *ngIf="!todo.complete">
+  <button (click)="completeTodo()">Complete</button>
+  <button (click)="deleteTodo()">Remove</button>
+</div>
+
+<br>

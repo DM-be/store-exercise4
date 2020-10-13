@@ -1,0 +1,8 @@
+<h1>My todolist</h1>
+<app-todo-list [todos]="uncompletedTodos$ | async"></app-todo-list>
+<br />
+<input [(ngModel)]="todoText" />
+<button (click)="addTodo()">add todo</button>
+
+<h2>Completed todos</h2>
+<app-todo-list [todos]="completedTodos$ | async"></app-todo-list>
