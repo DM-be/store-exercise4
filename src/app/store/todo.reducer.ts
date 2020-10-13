@@ -12,6 +12,10 @@ export function TodoReducer(
       return {
         todoList: action.payload
       };
+    case TodoActionTypes.LOAD_TODO_FAILURE: {
+      console.log(action.payload);
+      return state;
+    }
     case TodoActionTypes.ADD_TODO: {
       const todo: Todo = {
         id: uuidv4(),
