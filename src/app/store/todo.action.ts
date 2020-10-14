@@ -46,12 +46,12 @@ export class AddTodoFailureAction implements Action {
 
 export class CompleteTodoAction implements Action {
   readonly type = TodoActionTypes.COMPLETE_TODO;
-  constructor(public payload: string) {}
+  constructor(public payload: number) {}
 }
 
 export class DeleteTodoAction implements Action {
   readonly type = TodoActionTypes.DELETE_TODO;
-  constructor(public payload: string) {}
+  constructor(public payload: number) {}
 }
 
 export type TodoAction =
