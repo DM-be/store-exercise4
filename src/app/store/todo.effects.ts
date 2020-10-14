@@ -8,9 +8,9 @@ import { LoadTodoAction, LoadTodoActionFailure, LoadTodoActionSuccess, TodoActio
 
 export class TodoEffects {
   loadTodos$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType<LoadTodoAction>(TodoActionTypes.LOAD_TODO),
-      mergeMap(() =>
+    this.actions$.pipe( // subscribe to the action stream
+      ofType<LoadTodoAction>(TodoActionTypes.LOAD_TODO), // listen to the todo action
+      mergeMap(() => // merge a new action into the stream, depending on the result of the dataservice
         this.dataService.getTodos().pipe(
           map(todos => new LoadTodoActionSuccess(todos)),
           catchError(error => of(new LoadTodoActionFailure(error)))
