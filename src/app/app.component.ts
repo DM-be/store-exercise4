@@ -12,6 +12,7 @@ import { Todo } from "./store/models/todo";
 import { AddTodoAction, LoadTodoAction } from "./store/todo.action";
 import {
   selectCompletedTodos,
+  selectTodos,
   selectUncompletedTodos
 } from "./store/todo.selectors";
 import { TodoState } from "./store/todo.state";
@@ -29,14 +30,18 @@ export class AppComponent implements OnInit {
 
   public uncompletedTodos$: Observable<Todo[]>;
 
-  constructor(private store: Store<TodoState>) {}
+  constructor(private store: Store<AppState>) {}
   ngOnInit(): void {
     this.store.dispatch(new LoadTodoAction());
     this.store.subscribe(state => console.log(state));
 
-    this.completedTodos$ = this.store.select(selectCompletedTodos);
+    this.completedTodos$ = this.store.select(state =>
+      selectCompletedTodos(state.todoState)
+    );
 
-    this.uncompletedTodos$ = this.store.select(selectUncompletedTodos);
+    this.uncompletedTodos$ = this.store.select(state =>
+      selectUncompletedTodos(state.todoState)
+    );
   }
 
   public addTodo() {
