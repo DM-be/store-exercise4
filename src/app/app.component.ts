@@ -6,9 +6,10 @@ import {
 } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
+import { AddTodoRequest } from "./models/AddTodoRequest";
+import { Todo } from "./models/Todo";
 import { AppState } from "./store/app.state";
-import { AddTodoRequest } from "./store/models/AddTodoRequest";
-import { Todo } from "./store/models/todo";
+
 import { AddTodoAction, LoadTodoAction } from "./store/todo.action";
 import {
   selectCompletedTodos,

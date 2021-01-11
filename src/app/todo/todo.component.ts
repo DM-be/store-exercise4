@@ -8,9 +8,9 @@ import {
 } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
+import { CompleteTodoRequest } from "../models/CompleteTodoRequest";
 import { AppState } from "../store/app.state";
-import { CompleteTodoRequest } from "../store/models/CompleteTodoRequest";
-import { Todo } from "../store/models/todo";
+
 import { CompleteTodoAction, DeleteTodoAction } from "../store/todo.action";
 
 @Component({

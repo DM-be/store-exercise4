@@ -6,7 +6,7 @@ import {
   OnInit,
   Output
 } from "@angular/core";
-import { Todo } from "../store/models/todo";
+import { Todo } from "../models/Todo";
 
 @Component({
   selector: "app-todo-list",
