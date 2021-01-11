@@ -2,7 +2,6 @@ import { Todo } from "./models/todo";
 import { TodoAction, TodoActionTypes } from "./todo.action";
 import { initialTodoState, TodoState } from "./todo.state";
 
-
 export function TodoReducer(
   state: TodoState = initialTodoState,
   action: TodoAction
@@ -17,6 +16,7 @@ export function TodoReducer(
       return state;
     }
     case TodoActionTypes.ADD_TODO_SUCCESS: {
+      console.log(action.payload);
       return {
         todoList: [...state.todoList, action.payload]
       };
@@ -36,11 +36,9 @@ export function TodoReducer(
     case TodoActionTypes.COMPLETE_TODO_SUCCESS:
       const todoList = [...state.todoList];
       const todoIndex = todoList.findIndex(
-        (todo: Todo) => todo.id === action.payload
+        (todo: Todo) => todo.id === action.payload.id
       );
-      const todo = { ...todoList[todoIndex] };
-      todo.complete = action.request.complete;
-      todoList[todoIndex] = todo;
+      todoList[todoIndex] = action.payload;
       return {
         todoList
       };

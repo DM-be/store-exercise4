@@ -19,15 +19,15 @@ export class DataService {
     return this.http.post<Todo>(`${this.BASE_URL}/todos`, addTodoRequest);
   }
 
-  public deleteTodo(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.BASE_URL}/todos/${id}`);
+  public deleteTodo(id: number): Observable<number> {
+    return this.http.delete<number>(`${this.BASE_URL}/todos/${id}`);
   }
 
   public completeTodo(
     id: number,
     completeTodoRequest: CompleteTodoRequest
-  ): Observable<void> {
-    return this.http.patch<void>(
+  ): Observable<Todo> {
+    return this.http.patch<Todo>(
       `${this.BASE_URL}/todos/${id}`,
       completeTodoRequest
     );

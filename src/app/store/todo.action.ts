@@ -56,7 +56,7 @@ export class CompleteTodoAction implements Action {
 
 export class CompleteTodoActionSuccess implements Action {
   readonly type = TodoActionTypes.COMPLETE_TODO_SUCCESS;
-  constructor(public payload: number, public request: CompleteTodoRequest) {}
+  constructor(public payload: Todo) {}
 }
 
 export class CompleteTodoActionFailure implements Action {

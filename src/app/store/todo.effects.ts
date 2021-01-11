@@ -7,9 +7,9 @@ import {
   AddTodoAction,
   AddTodoFailureAction,
   AddTodoSuccessAction,
-CompleteTodoAction,
-CompleteTodoActionSuccess,
-        DeleteTodoAction,
+  CompleteTodoAction,
+  CompleteTodoActionSuccess,
+  DeleteTodoAction,
   DeleteTodoFailureAction,
   DeleteTodoSuccessAction,
   LoadTodoAction,
@@ -55,15 +55,18 @@ export class TodoEffects {
     )
   );
 
-  
   completeTodo$ = createEffect(() =>
     this.actions$.pipe(
       ofType<CompleteTodoAction>(TodoActionTypes.COMPLETE_TODO),
       mergeMap(completeTodoAction =>
-        this.dataService.completeTodo(completeTodoAction.payload, completeTodoAction.request).pipe(
-          map(() => new CompleteTodoActionSuccess(completeTodoAction.payload, completeTodoAction.request)),
-          catchError(error => of(new DeleteTodoFailureAction(error)))
-        )
+        this.dataService
+          .completeTodo(completeTodoAction.payload, completeTodoAction.request)
+          .pipe(
+            map(todo => {
+              return new CompleteTodoActionSuccess(todo);
+            }),
+            catchError(error => of(new DeleteTodoFailureAction(error)))
+          )
       )
     )
   );
