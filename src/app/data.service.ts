@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { AddTodoRequest } from "./store/models/AddTodoRequest";
-import { CompleteTodoRequest } from "./store/models/CompleteTodoRequest";
-import { Todo } from "./store/models/todo";
+import { AddTodoRequest } from "./models/AddTodoRequest";
+import { CompleteTodoRequest } from "./models/CompleteTodoRequest";
+import { Todo } from "./models/Todo";
 
 @Injectable()
 export class DataService {
@@ -19,8 +19,8 @@ export class DataService {
     return this.http.post<Todo>(`${this.BASE_URL}/todos`, addTodoRequest);
   }
 
-  public deleteTodo(id: number): Observable<number> {
-    return this.http.delete<number>(`${this.BASE_URL}/todos/${id}`);
+  public deleteTodo(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.BASE_URL}/todos/${id}`);
   }
 
   public completeTodo(
