@@ -8,7 +8,8 @@ import {
   AddTodoFailureAction,
   AddTodoSuccessAction,
   CompleteTodoAction,
-  CompleteTodoActionSuccess,
+CompleteTodoActionFailure,
+    CompleteTodoActionSuccess,
   DeleteTodoAction,
   DeleteTodoFailureAction,
   DeleteTodoSuccessAction,
@@ -62,10 +63,8 @@ export class TodoEffects {
         this.dataService
           .completeTodo(completeTodoAction.payload, completeTodoAction.request)
           .pipe(
-            map(todo => {
-              return new CompleteTodoActionSuccess(todo);
-            }),
-            catchError(error => of(new DeleteTodoFailureAction(error)))
+            map(todo =>  new CompleteTodoActionSuccess(todo)),
+            catchError(error => of(new CompleteTodoActionFailure(error)))
           )
       )
     )

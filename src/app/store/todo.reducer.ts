@@ -26,13 +26,18 @@ export function TodoReducer(
       return state;
     }
     case TodoActionTypes.DELETE_TODO_SUCCESS: {
-      // maybe we should only do this in a success response....
       return {
         todoList: [
           ...state.todoList.filter((todo: Todo) => todo.id !== action.payload)
         ]
       };
     }
+
+    case TodoActionTypes.DELETE_TODO_FAILURE: {
+      console.log(action.payload)
+      return state;
+    }
+
     case TodoActionTypes.COMPLETE_TODO_SUCCESS:
       const todoList = [...state.todoList];
       const todoIndex = todoList.findIndex(
