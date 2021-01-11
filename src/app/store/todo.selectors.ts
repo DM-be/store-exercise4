@@ -6,10 +6,18 @@ export const selectTodos = (state: TodoState) => state.todoList;
 
 export const selectCompletedTodos = createSelector(
   selectTodos,
-  (todos: Todo[]) => todos.filter(todo => todo.complete)
+  (todos: Todo[]) => {
+    if (todos) {
+      return todos.filter(todo => !todo.complete);
+    }
+  }
 );
 
 export const selectUncompletedTodos = createSelector(
   selectTodos,
-  (todos: Todo[]) => todos.filter(todo => !todo.complete)
+  (todos: Todo[]) => {
+    if (todos) {
+      return todos.filter(todo => !todo.complete);
+    }
+  }
 );

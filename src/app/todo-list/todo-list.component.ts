@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter,  Input, OnInit, Output } from "@angular/core";
-import { Todo } from "../models/todo";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from "@angular/core";
+import { Todo } from "../store/models/todo";
 
 @Component({
   selector: "app-todo-list",
@@ -12,9 +19,5 @@ export class TodoListComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    
-  }
-
- 
+  ngOnInit() {}
 }
