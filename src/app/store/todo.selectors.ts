@@ -8,7 +8,7 @@ export const selectCompletedTodos = createSelector(
   selectTodos,
   (todos: Todo[]) => {
     if (todos) {
-      return todos.filter(todo => !todo.complete);
+      return todos.filter(todo => todo.complete);
     }
   }
 );
