@@ -28,13 +28,11 @@ export class AppComponent implements OnInit {
 
   public uncompletedTodos$: Observable<Todo[]>;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store) {}
   ngOnInit(): void {
     this.store.dispatch(new LoadTodoAction());
 
-    this.completedTodos$ = this.store.select(state =>
-      selectCompletedTodos(state.todoState)
-    );
+    this.completedTodos$ = this.store.select(selectCompletedTodos);
 
     this.uncompletedTodos$ = this.store.select(state =>
       selectUncompletedTodos(state.todoState)

@@ -8,10 +8,11 @@ import { EffectsModule } from "@ngrx/effects";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { TodoComponent } from "./todo/todo.component";
 import { TodoReducer } from "./store/todo.reducer";
-import { TodoListComponent } from "./store/todo-list/todo-list.component";
+
 import { DataService } from "./data.service";
 import { TodoEffects } from "./store/todo.effects";
 import { HttpClientModule } from "@angular/common/http";
+import { TodoListComponent } from "./todo-list/todo-list.component";
 
 @NgModule({
   imports: [
