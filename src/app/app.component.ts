@@ -14,6 +14,7 @@ import {
   selectCompletedTodos,
   selectUncompletedTodos
 } from "./store/todo.selectors";
+import { TodoState } from "./store/todo.state";
 
 @Component({
   selector: "my-app",
@@ -28,9 +29,10 @@ export class AppComponent implements OnInit {
 
   public uncompletedTodos$: Observable<Todo[]>;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<TodoState>) {}
   ngOnInit(): void {
     this.store.dispatch(new LoadTodoAction());
+    this.store.subscribe(state => console.log(state));
 
     this.completedTodos$ = this.store.select(selectCompletedTodos);
 
