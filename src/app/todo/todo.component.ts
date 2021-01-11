@@ -9,6 +9,7 @@ import {
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { CompleteTodoRequest } from "../models/CompleteTodoRequest";
+import { Todo } from "../models/Todo";
 import { AppState } from "../store/app.state";
 
 import { CompleteTodoAction, DeleteTodoAction } from "../store/todo.action";

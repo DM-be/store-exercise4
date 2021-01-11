@@ -1,5 +1,5 @@
-import { Todo } from "./models/todo";
-import { v4 as uuidv4 } from "uuid";
+import { Todo } from "../models/Todo";
+
 
 export interface TodoState {
   todoList: Todo[];

@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Action } from "@ngrx/store";
-import { AddTodoRequest } from "./models/AddTodoRequest";
-import { CompleteTodoRequest } from "./models/CompleteTodoRequest";
-import { Todo } from "./models/todo";
+import { AddTodoRequest } from "../models/AddTodoRequest";
+import { CompleteTodoRequest } from "../models/CompleteTodoRequest";
+import { Todo } from "../models/Todo";
 
 // we will need more actions, each with success and failure
 export enum TodoActionTypes {

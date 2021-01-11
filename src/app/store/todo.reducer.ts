@@ -1,4 +1,5 @@
-import { Todo } from "./models/todo";
+
+import { Todo } from "../models/Todo";
 import { TodoAction, TodoActionTypes } from "./todo.action";
 import { initialTodoState, TodoState } from "./todo.state";
 
