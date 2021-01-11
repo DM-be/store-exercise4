@@ -12,7 +12,7 @@ export function TodoReducer(
         todoList: action.payload
       };
     case TodoActionTypes.LOAD_TODO_FAILURE: {
-      console.log(action.payload); // we can handle errors here
+      console.log(action.payload); 
       return state;
     }
     case TodoActionTypes.ADD_TODO_SUCCESS: {
@@ -34,7 +34,7 @@ export function TodoReducer(
     }
 
     case TodoActionTypes.DELETE_TODO_FAILURE: {
-      console.log(action.payload)
+      console.log(action.payload.status);
       return state;
     }
 
