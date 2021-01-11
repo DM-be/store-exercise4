@@ -34,9 +34,7 @@ export class AppComponent implements OnInit {
 
     this.completedTodos$ = this.store.select(selectCompletedTodos);
 
-    this.uncompletedTodos$ = this.store.select(state =>
-      selectUncompletedTodos(state.todoState)
-    );
+    this.uncompletedTodos$ = this.store.select(selectUncompletedTodos);
   }
 
   public addTodo() {
